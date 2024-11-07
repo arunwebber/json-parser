@@ -1,0 +1,140 @@
+/* Reset body styles and center content */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Main container styling */
+.container {
+    display: flex;
+    width: 90%;
+    height: 80%;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+}
+
+/* Input and output containers */
+.input-container,
+.output-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: relative;
+}
+
+/* Make the textareas fill the available space and add padding */
+textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    font-family: monospace;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 10px; /* Space between the textarea and the button */
+}
+
+/* Ensure buttons are at the bottom */
+.input-container,
+.output-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures that the button is pushed to the bottom */
+}
+
+/* Format button styling */
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Make the buttons span the full width of their container */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Output container on the right with scrollable output */
+.output-container {
+    border-left: 1px solid #ccc;
+    padding-left: 15px;
+    overflow-y: auto;
+}
+
+#jsonOutput {
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* Status bar styling */
+.status-bar {
+    width: 100%;
+    padding: 1px;
+    font-size: 10px;
+    color: #555;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Styling for expandable/collapsible JSON nodes */
+.json-node {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* This class hides the collapsed JSON sections */
+.collapsed {
+    display: none;
+}
+
+/* Button-like appearance for expand/collapse buttons */
+.expand-collapse-btn {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-right: 5px;
+}
+
+.expand-collapse-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the copy JSON button */
+#copyJsonButton {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Make the copy button span the full width of its container */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+#copyJsonButton:hover {
+    background-color: #0056b3;
+}

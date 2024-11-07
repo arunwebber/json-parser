@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Parser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="input-container">
+            <textarea id="jsonInput" placeholder="Paste JSON here..."></textarea>
+            <button id="formatButton">Format JSON</button>
+        </div>
+        <div class="output-container">
+            <pre id="jsonOutput"></pre>
+            <button id="copyJsonButton">Copy JSON</button> <!-- New button here -->
+        </div>
+        <div id="statusBar" class="status-bar">Characters: 0 | Position: Line 1, Col 1</div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
