@@ -1,3 +1,10 @@
+const jsonInput = document.getElementById('jsonInput');
+const jsonOutput = document.getElementById('jsonOutput');
+const increaseFontBtn = document.getElementById('increaseFont');
+const decreaseFontBtn = document.getElementById('decreaseFont');
+
+let increaseInterval;
+let decreaseInterval;
 let rawJsonData = null;  // Variable to store the raw JSON data
 
 // Format Button Click Event
@@ -147,3 +154,71 @@ function getCursorPosition(textarea) {
 
 // Initial status update
 updateStatus();
+
+// Function to increase font size
+function increaseFontSize() {
+    const currentSize = parseInt(window.getComputedStyle(jsonInput).fontSize);
+    const newSize = currentSize + 2;
+    jsonInput.style.fontSize = `${newSize}px`;
+    jsonOutput.style.fontSize = `${newSize}px`;
+    localStorage.setItem('fontSize', `${newSize}px`);
+}
+
+// Function to decrease font size
+function decreaseFontSize() {
+    const currentSize = parseInt(window.getComputedStyle(jsonInput).fontSize);
+    const newSize = Math.max(10, currentSize - 2);
+    jsonInput.style.fontSize = `${newSize}px`;
+    jsonOutput.style.fontSize = `${newSize}px`;
+    localStorage.setItem('fontSize', `${newSize}px`);
+}
+
+// Event listeners for font size buttons
+increaseFontBtn.addEventListener('mousedown', () => {
+    increaseInterval = setInterval(increaseFontSize, 100);
+});
+increaseFontBtn.addEventListener('mouseup', () => clearInterval(increaseInterval));
+increaseFontBtn.addEventListener('mouseleave', () => clearInterval(increaseInterval));
+
+decreaseFontBtn.addEventListener('mousedown', () => {
+    decreaseInterval = setInterval(decreaseFontSize, 100);
+});
+decreaseFontBtn.addEventListener('mouseup', () => clearInterval(decreaseInterval));
+decreaseFontBtn.addEventListener('mouseleave', () => clearInterval(decreaseInterval));
+
+
+
+
+
+// Function to update the line numbers
+const textarea = document.querySelector('textarea');
+const lineNumbers = document.querySelector('.line-numbers');
+
+// Function to update the line numbers
+function updateLineNumbers() {
+    const lines = textarea.value.split('\n').length;
+    let lineNumbersHtml = '';
+
+    for (let i = 1; i <= lines; i++) {
+        lineNumbersHtml += `<div>${i}</div>`;
+    }
+
+    lineNumbers.innerHTML = lineNumbersHtml;
+
+    // Sync the font size of the line numbers with the textarea font size
+    const fontSize = window.getComputedStyle(textarea).fontSize;
+    lineNumbers.style.fontSize = fontSize;  // Ensure line numbers match font size
+    lineNumbers.style.lineHeight = window.getComputedStyle(textarea).lineHeight;  // Ensure line height is also the same
+}
+
+// Update line numbers whenever the user types in the textarea
+textarea.addEventListener('input', updateLineNumbers);
+
+// Sync scrolling behavior
+textarea.addEventListener('scroll', () => {
+    lineNumbers.scrollTop = textarea.scrollTop;
+});
+
+// Initialize the line numbers when the page loads
+updateLineNumbers();
+
