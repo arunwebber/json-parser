@@ -1,6 +1,7 @@
-Here's the updated README file for your GitHub repository with the author section removed and adjusted to suit GitHub:
+<p align="center">
+  <img src="https://github.com/arunwebber/json-parser/blob/main/images/icon_128.png" alt="JSON Parser Icon" width="128" height="128">
+</p>
 
----
 
 # Simple JSON Formatter
 
